@@ -2,21 +2,25 @@ package springboot.one.topic;
 
 public class Topic {
 
-    private int id;
+    private String id;
     private String name;
     private String desc;
 
-    public Topic(int id, String name, String desc) {
+    public Topic(String id, String name, String desc) {
         this.id = id;
         this.name = name;
         this.desc = desc;
     }
 
-    public int getId() {
+    // define a nno-arg constructor - needed for Spring to auto-instantiate from request body
+    // Spring uses deserialization instead of your hand-coded constructor
+    public Topic() {}
+
+    public String getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -35,4 +39,9 @@ public class Topic {
     public void setDesc(String desc) {
         this.desc = desc;
     }
+    // when you log an object to the console, it looks funny (not what you'd expect)
+    // this method tests that you are indeed logging Topic instances
+    // public String toString() {
+    //     return "kitty";
+    // }
 }
